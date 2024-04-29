@@ -36,14 +36,13 @@
 
 f: {
   system ? builtins.currentSystem
-  , nixpkgs ? (import ../versions.nix {}).nixpkgs
-  , pkgs ? import ../. { inherit nixpkgs; }
+  , pkgs
   , minimal ? false
   , config ? {}
   , ...
 } @ args:
 
-with import "${nixpkgs}/nixos/lib/testing-python.nix" {
+with import "${pkgs.path}/nixos/lib/testing-python.nix" {
   inherit system pkgs;
 };
 

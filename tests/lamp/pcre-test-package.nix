@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { }
+{ pkgs
 , stdenv ? pkgs.stdenv
 , mkDerivation ? stdenv.mkDerivation
 , makeWrapper ? pkgs.makeWrapper

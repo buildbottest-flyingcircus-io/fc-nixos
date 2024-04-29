@@ -11,8 +11,6 @@ with lib;
 # - domains: list of mail domains for which regular mail accounts exist
 
 let
-  inherit (import ../../../versions.nix { }) nixos-mailserver;
-
   copyToStore = pathString:
     let p = builtins.path { path = pathString; }; in "${p}";
 
@@ -37,7 +35,6 @@ let
 
 in {
   imports = [
-    "${nixos-mailserver}"
     ./roundcube.nix
     ./rspamd.nix
     ./stub.nix

@@ -5,7 +5,7 @@
 # Build own package: nix-build -A fc.userscan
 # ===
 # <nixpkgs> should usually point to FC patched upstream nixpkgs
-{ nixpkgs ? <nixpkgs>
+{ nixpkgs
 , localSystem ? builtins.intersectAttrs { system = null; platform = null; } args
 , system ? localSystem.system
 , platform ? localSystem.platform

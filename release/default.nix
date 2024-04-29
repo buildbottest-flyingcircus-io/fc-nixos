@@ -1,6 +1,6 @@
 # everything in release/ MUST NOT import from <nixpkgs> to get repeatable builds
 { system ? builtins.currentSystem
-, bootstrap ? <nixpkgs>
+, bootstrap
 , nixpkgs_ ? (import ../versions.nix { pkgs = import bootstrap {}; }).nixpkgs
 , branch ? null  # e.g. "fc-24.05-dev"
 , stableBranch ? false

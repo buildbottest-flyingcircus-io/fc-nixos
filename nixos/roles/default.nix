@@ -21,8 +21,8 @@ in {
     ./k3s
     ./lamp.nix
     ./loki.nix
-    ./mailout.nix
-    ./mailserver.nix
+    #./mailout.nix
+    #./mailserver.nix
     ./matomo.nix
     ./memcached.nix
     ./mongodb.nix

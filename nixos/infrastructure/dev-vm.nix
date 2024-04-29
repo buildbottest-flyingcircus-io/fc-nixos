@@ -93,9 +93,9 @@ in {
 
       flyingcircus.roles.memcached.listenAddresses = [ "0.0.0.0" "[::]" ];
 
-      flyingcircus.roles.mailserver.smtpBind4 = "127.0.0.1";
-      flyingcircus.roles.mailserver.smtpBind6 = "::1";
-      flyingcircus.roles.mailserver.explicitSmtpBind = false;
+      #flyingcircus.roles.mailserver.smtpBind4 = "127.0.0.1";
+      #flyingcircus.roles.mailserver.smtpBind6 = "::1";
+      #flyingcircus.roles.mailserver.explicitSmtpBind = false;
 
       flyingcircus.roles.mysql.listenAddresses = [ "::" ];
 

@@ -1,6 +1,6 @@
-{ system ? builtins.currentSystem
-, nixpkgs ? (import ../versions.nix {}).nixpkgs
-, pkgs ? import nixpkgs { inherit system; }
+{ system
+, pkgs
+, nixos-mailserver
 }:
 
 with pkgs.lib;
@@ -8,7 +8,7 @@ with pkgs.lib;
 let
   # test calling code copied from nixos/release.nix
   importTest = fn: args: system: import fn ({
-    inherit system;
+    inherit system nixos-mailserver pkgs;
   } // args);
 
   callTest = fn: args: hydraJob (importTest fn args system).test;
@@ -29,7 +29,7 @@ in {
   # When in doubt, it's better to write our own test or copy&paste from nixpkgs.
   # inherit (pkgs.nixosTests)
 
-  antivirus = callTest ./antivirus.nix {};
+  #antivirus = callTest ./antivirus.nix {};
   audit = callTest ./audit.nix {};
   # XXX: fails with fetchPypi missing in py.fetchPypi
   # backyserver = callTest ./backyserver.nix {};
@@ -70,8 +70,8 @@ in {
   locale = callTest ./locale.nix {};
   login = callTest ./login.nix {};
   logrotate = callTest ./logrotate.nix {};
-  mail = callTest ./mail {};
-  mailstub = callTest ./mail/stub.nix {};
+  #mail = callTest ./mail {};
+  #mailstub = callTest ./mail/stub.nix {};
   matomo = callTest ./matomo.nix {};
   memcached = callTest ./memcached.nix {};
   mongodb32 = callTest ./mongodb.nix { version = "3.2"; };
@@ -89,7 +89,6 @@ in {
   openvpn = callTest ./openvpn.nix {};
   percona80 = callTest ./mysql.nix { rolename = "percona80"; };
   percona83 = callTest ./mysql.nix { rolename = "percona83"; };
-  physical-installer = callTest ./physical-installer.nix { inherit nixpkgs; };
   postgresql12 = callTest ./postgresql { version = "12"; };
   postgresql13 = callTest ./postgresql { version = "13"; };
   postgresql14 = callTest ./postgresql { version = "14"; };

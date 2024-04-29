@@ -42,6 +42,7 @@
       imports = [
         inputs.devenv.flakeModule
         ./release/flake-part-linux-only-packages.nix
+        ./release/flake-part-checks.nix
       ];
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
       perSystem = { config, self', inputs', pkgs, lib, system, ... }: {
@@ -196,6 +197,8 @@
               '';
             };
           };
+
         };
+
     }; # end mkFlake
 }
